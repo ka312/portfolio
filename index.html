@@ -137,6 +137,58 @@
     </style>
 </head>
 <body class="gradient-bg text-white scroll-smooth">
+
+<!-- Hero Section -->
+<section id="home" class="relative overflow-hidden bg-gradient-to-br from-purple-700 to-purple-500 text-white min-h-screen flex items-center">
+  <!-- Floating shapes (unchanged) -->
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+
+  <!-- Main grid container -->
+  <div class="z-10 w-full px-6 sm:px-8 lg:px-16 max-w-7xl mx-auto
+            grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+  
+  <!-- Text column -->
+  <div class="text-center md:text-left space-y-6">
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gradient leading-tight">
+      HERE TO<br/>CONNECT
+    </h1>
+    <p class="text-lg sm:text-xl font-medium text-purple-200">
+      UNTANGLE THE WEB WITH AI
+    </p>
+    <p class="text-base sm:text-lg text-gray-300 max-w-md">
+      AI &amp; Data Engineering Enthusiast | Master's in Data Analytics<br/>
+      Building the future with LLMs, RAG, and Agentic Systems
+    </p>
+    <a href="about.html"
+       class="inline-block btn-gradient px-8 py-3 rounded-full text-lg font-semibold transition-transform hover:-translate-y-1">
+      CONNECT HERE
+    </a>
+  </div>
+
+  <!-- Image column -->
+  <div class="flex justify-center md:justify-end">
+    <div class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full p-1 
+                bg-gradient-to-r from-pink-500 to-purple-500 animate-float">
+      <div class="w-full h-full rounded-full overflow-hidden bg-white shadow-xl">
+        <img src="headshot.jpeg" alt="Karan Sai Goud" class="object-cover w-full h-full" />
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  <!-- Scroll-down arrow -->
+  <div class="absolute bottom-8 w-full flex justify-center">
+    <svg class="w-8 h-8 text-purple-300 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full glass-effect z-50">
         <div class="max-w-6xl mx-auto px-4 py-4">
@@ -165,34 +217,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        
-        <div class="text-center z-10 max-w-4xl mx-auto px-4">
-            <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient">
-                HERE TO<br>CONNECT
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 text-purple-200 font-medium">
-                UNTANGLE THE WEB WITH AI
-            </p>
-            <p class="text-lg mb-12 text-gray-300 max-w-2xl mx-auto">
-                AI & Data Engineering Enthusiast | Master's in Data Analytics | Building the future with LLMs, RAG, and Agentic Systems
-            </p>
-            <a href="about.html" class="btn-gradient px-8 py-4 rounded-full text-lg font-semibold">
-                CONNECT HERE
-            </a>
-            <div class="mt-12 animate-bounce">
-                <svg class="mx-auto text-purple-300 w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </div>
-        </div>
-    </section>
 
 
 </body>
