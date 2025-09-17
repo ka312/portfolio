@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karan Sai Goud Katam - AI Portfolio</title>
+  <!-- ... existing meta tags and title ... -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           animation: {
-            'float': 'float 6s ease-in-out infinite'
+            'float': 'float 6s ease-in-out infinite',
+            'gradient': 'gradient 15s ease infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           },
           keyframes: {
             float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '33%': { transform: 'translateY(-8px)' },
-              '66%': { transform: 'translateY(4px)' }
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '33%': { transform: 'translateY(-10px) rotate(5deg)' },
+              '66%': { transform: 'translateY(5px) rotate(-5deg)' }
+            },
+            gradient: {
+              '0%, 100%': {
+                'background-position': '0% 50%'
+              },
+              '50%': {
+                'background-position': '100% 50%'
+              }
             }
           }
         }
@@ -24,143 +32,136 @@
     }
   </script>
   <style>
+    /* Enhanced gradient background with smoother animation */
     .gradient-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #1e40af, #1e3a8a);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
     }
+
+    /* Improved text gradient */
     .text-gradient {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% auto;
+      animation: gradient 3s ease infinite;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    /* Enhanced button gradient */
     .btn-gradient {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% auto;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    
     .btn-gradient:hover {
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      background-position: right center;
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
     }
+
+    /* Improved glass effect */
     .glass-effect {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     }
+
+    /* Enhanced floating shapes */
     .floating-shape {
       position: absolute;
       border-radius: 50%;
-      filter: blur(40px);
-      animation: float 6s ease-in-out infinite;
+      filter: blur(50px);
+      opacity: 0.5;
+      mix-blend-mode: screen;
+      animation: float 8s ease-in-out infinite;
     }
+
     .floating-shape:nth-child(1) {
       top: 10%; left: 10%;
-      width: 100px; height: 100px;
+      width: 150px; height: 150px;
       background: linear-gradient(45deg, #3b82f6, #6366f1);
       animation-delay: 0s;
     }
+
     .floating-shape:nth-child(2) {
       top: 20%; right: 15%;
-      width: 80px; height: 80px;
-      background: linear-gradient(45deg, #0ea5e9, #3b82f6);
-      animation-delay: 1s;
-    }
-    .floating-shape:nth-child(3) {
-      bottom: 20%; left: 20%;
       width: 120px; height: 120px;
-      background: linear-gradient(45deg, #6366f1, #60a5fa);
+      background: linear-gradient(45deg, #0ea5e9, #3b82f6);
       animation-delay: 2s;
     }
+
+    .floating-shape:nth-child(3) {
+      bottom: 20%; left: 20%;
+      width: 180px; height: 180px;
+      background: linear-gradient(45deg, #6366f1, #60a5fa);
+      animation-delay: 4s;
+    }
+
     .floating-shape:nth-child(4) {
       bottom: 10%; right: 10%;
-      width: 90px; height: 90px;
+      width: 140px; height: 140px;
       background: linear-gradient(45deg, #10b981, #3b82f6);
-      animation-delay: 3s;
+      animation-delay: 6s;
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Enhanced card hover effects */
+    .hover-card-effect {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hover-card-effect:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Image container glow effect */
+    .glow-effect {
+      position: relative;
+    }
+
+    .glow-effect::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.5), transparent 70%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glow-effect:hover::after {
+      opacity: 1;
+    }
+
+    /* Navigation link hover effect */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #6366f1);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
     }
   </style>
 </head>
-
-<body class="gradient-bg text-white font-sans scroll-smooth">
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 w-full glass-effect z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4">
-      <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-gradient">Karan Sai Goud Katam</div>
-        <div class="hidden md:flex space-x-8 items-center">
-          <a href="Resume_Karan_sai_goud_katam.pdf" download class="btn-gradient px-5 py-2 rounded-full text-sm font-semibold">Download Resume</a>
-          <a href="index.html" class="text-gray-300 hover:text-blue-400 transition">Home</a>
-          <a href="about.html" class="text-gray-300 hover:text-blue-400 transition">About</a>
-          <a href="experience.html" class="text-gray-300 hover:text-blue-400 transition">Experience</a>
-          <a href="projects.html" class="text-gray-300 hover:text-blue-400 transition">Projects</a>
-          <a href="contact.html" class="text-gray-300 hover:text-blue-400 transition">Contact</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-
-    <div class="z-10 w-full px-6 sm:px-8 lg:px-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-start gap-8">
-      <!-- Text Column -->
-      <div class="space-y-10 lg:pt-8">
-        <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight">
-          "The future belongs to those who believe in the <span class="text-gradient animate-pulse">beauty</span> of their dreams."
-        </h1>
-        <p class="text-lg text-blue-200 italic font-medium">— Eleanor Roosevelt</p>
-
-        <p class="text-2xl font-black text-white">🚀 I transform <span class="text-blue-300">COMPLEXITY</span> into <span class="text-green-300">CLARITY</span>!</p>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl border border-white/10 hover:scale-105 transition">
-            💻 <span class="font-semibold text-white">AI Engineer</span>
-          </div>
-          <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl border border-white/10 hover:scale-105 transition">
-            📊 <span class="font-semibold text-white">Data Scientist</span>
-          </div>
-          <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl border border-white/10 hover:scale-105 transition">
-            ⚡ <span class="font-semibold text-white">ML Engineer</span>
-          </div>
-          <div class="flex items-center gap-3 bg-slate-800 p-4 rounded-xl border border-white/10 hover:scale-105 transition">
-            🔮 <span class="font-semibold text-white">LLM Specialist</span>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-4 bg-slate-900 p-4 rounded-xl border border-white/10 hover:scale-105 transition">
-          🎓 <span class="font-bold text-white">Master's in Data Analytics</span>
-          <span class="text-white/50">•</span>
-          ⚙️ <span class="font-bold text-white">RAG & Agentic Systems</span>
-        </div>
-
-        <p class="text-lg text-center font-semibold bg-blue-900/30 p-4 rounded-xl border border-blue-400/30 shadow-lg">
-          🎯 Building intelligent systems for tomorrow's data-driven world
-        </p>
-
-        <div class="flex gap-4 justify-center">
-          <a href="about.html" class="btn-gradient px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition">EXPLORE WORK</a>
-          <a href="contact.html" class="btn-gradient px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition">CONNECT</a>
-        </div>
-      </div>
-
-      <!-- Image Column -->
-      <div class="flex justify-center lg:justify-end relative">
-        <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-          <div class="w-full h-full rounded-full p-2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 shadow-2xl">
-            <div class="w-full h-full rounded-full overflow-hidden bg-white shadow-2xl border-4 border-white/50">
-              <img src="headshot.jpeg" alt="Karan Sai Goud" class="object-cover w-full h-full hover:scale-110 transition-transform duration-500"/>
-            </div>
-          </div>
-          <div class="absolute inset-0 rounded-full border-4 border-blue-400/60 animate-ping shadow-lg"></div>
-          <div class="absolute inset-2 rounded-full border-2 border-indigo-400/60 animate-ping shadow-lg" style="animation-delay: 0.5s;"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</body>
-</html>
