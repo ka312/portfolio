@@ -10,12 +10,19 @@
       theme: {
         extend: {
           animation: {
-            'float': 'float 6s ease-in-out infinite'
+            float: 'float 6s ease-in-out infinite',
+            gradient: 'gradient 15s ease infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           },
           keyframes: {
             float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' }
+              '0%, 100%': { transform: 'translateY(0) rotate(0)' },
+              '33%': { transform: 'translateY(-10px) rotate(5deg)' },
+              '66%': { transform: 'translateY(5px) rotate(-5deg)' }
+            },
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' }
             }
           }
         }
@@ -23,67 +30,195 @@
     }
   </script>
   <style>
+    /* Gradient background */
     .gradient-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #1e40af, #1e3a8a);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
     }
+
+    /* Text gradient */
     .text-gradient {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% auto;
+      animation: gradient 3s ease infinite;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    /* Button gradient */
     .btn-gradient {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% auto;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .btn-gradient:hover {
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      background-position: right center;
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
     }
+
+    /* Glass effect */
     .glass-effect {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     }
-    .card-hover {
-      transition: all 0.3s ease;
+
+    /* Hover effects */
+    .hover-card-effect {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .card-hover:hover {
-      transform: translateY(-5px);
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+    .hover-card-effect:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(99, 102, 241, 0.4);
     }
-    .scroll-smooth {
-      scroll-behavior: smooth;
+
+    /* Floating shapes */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      animation: float 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .floating-shape:nth-child(1) {
+      top: 15%; left: 8%;
+      width: 200px; height: 200px;
+      background: linear-gradient(45deg, #3b82f6, #6366f1);
+      animation-delay: 0s;
+    }
+    .floating-shape:nth-child(2) {
+      top: 25%; right: 12%;
+      width: 150px; height: 150px;
+      background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+      animation-delay: 3s;
+    }
+    .floating-shape:nth-child(3) {
+      bottom: 20%; left: 15%;
+      width: 180px; height: 180px;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6);
+      animation-delay: 6s;
+    }
+
+    /* Nav underline */
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #6366f1);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Skill card animations */
+    .skill-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px) rotate(2deg);
+      box-shadow: 0 15px 35px rgba(99, 102, 241, 0.3);
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: transform 0.6s;
+      transform: rotate(45deg) translate(-100%, -100%);
+    }
+    .skill-card:hover::before {
+      transform: rotate(45deg) translate(100%, 100%);
     }
   </style>
 </head>
-<body class="gradient-bg text-white scroll-smooth">
+<body class="gradient-bg text-white">
+
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full glass-effect z-50">
+  <nav class="fixed top-0 w-full glass-effect z-50" role="navigation" aria-label="Primary">
     <div class="max-w-6xl mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
-        <div class="text-2xl font-bold text-gradient">Karan Sai Goud Katam</div>
-        <div class="hidden md:flex space-x-8 items-center">
-          <a href="Resume_Karan_sai_goud_katam.pdf" download class="btn-gradient px-5 py-2 rounded-full text-sm font-semibold">Download Resume</a>
-          <a href="index.html" class="text-gray-300 hover:text-blue-400 transition">Home</a>
-          <a href="about.html" class="text-gray-300 hover:text-blue-400 transition">About</a>
-          <a href="experience.html" class="text-gray-300 hover:text-blue-400 transition">Experience</a>
-          <a href="projects.html" class="text-gray-300 hover:text-blue-400 transition">Projects</a>
-          <a href="contact.html" class="text-gray-300 hover:text-blue-400 transition">Contact</a>
+        <a href="index.html" class="text-2xl font-bold text-gradient">Karan Sai Goud Katam</a>
+
+        <!-- Desktop -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="Resume_Karan_sai_goud_katam.pdf" download
+             class="btn-gradient px-5 py-2 rounded-full text-sm font-semibold"
+             rel="noopener">Download Resume</a>
+          <a href="index.html" class="nav-link text-gray-300 hover:text-blue-400">Home</a>
+          <a href="about.html" class="nav-link text-blue-400 font-semibold">About</a>
+          <a href="experience.html" class="nav-link text-gray-300 hover:text-blue-400">Experience</a>
+          <a href="projects.html" class="nav-link text-gray-300 hover:text-blue-400">Projects</a>
+          <a href="contact.html" class="nav-link text-gray-300 hover:text-blue-400">Contact</a>
         </div>
+
+        <!-- Mobile toggle -->
+        <button id="navToggle" class="md:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden mt-3 space-y-2">
+        <a href="Resume_Karan_sai_goud_katam.pdf" download class="block btn-gradient text-center px-5 py-2 rounded-full text-sm font-semibold" rel="noopener">Download Resume</a>
+        <a href="index.html" class="block nav-link text-gray-300 hover:text-blue-400">Home</a>
+        <a href="about.html" class="block nav-link text-blue-400 font-semibold">About</a>
+        <a href="experience.html" class="block nav-link text-gray-300 hover:text-blue-400">Experience</a>
+        <a href="projects.html" class="block nav-link text-gray-300 hover:text-blue-400">Projects</a>
+        <a href="contact.html" class="block nav-link text-gray-300 hover:text-blue-400">Contact</a>
       </div>
     </div>
   </nav>
 
   <!-- About Section -->
-  <section id="about" class="pt-32 pb-20 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold mb-16 text-center text-gradient">About Me</h2>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
-        <div>
-          <div class="glass-effect rounded-2xl p-8 card-hover">
+  <section id="about" class="relative pt-32 pb-20 px-6 overflow-hidden">
+    <!-- Floating background shapes -->
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">
+          About <span class="text-gradient">Me</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Main Content -->
+        <div class="space-y-8">
+          <div class="glass-effect rounded-2xl p-8 hover-card-effect">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <span class="text-2xl">🚀</span>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white">AI Engineer & Data Scientist</h3>
+                <p class="text-blue-300">Transforming complexity into clarity</p>
+              </div>
+            </div>
+            
             <p class="text-lg leading-relaxed mb-6 text-gray-200">
               I'm passionate about AI, Large Language Models, RAG systems, cloud computing, and agentic systems. With experience spanning federal technology, academic research, and enterprise AI pipelines, I specialize in building intelligent systems that solve real-world problems.
             </p>
@@ -91,60 +226,162 @@
               Currently pursuing my Master's in Data Analytics Engineering while working on cutting-edge projects involving satellite imagery analysis, multi-agent AI systems, and government technology solutions.
             </p>
           </div>
-          <div class="mt-8 space-y-4 text-blue-300">
-            <p class="flex items-center gap-2">📍 Fairfax, VA, USA</p>
-            <p class="flex items-center gap-2">📧 karan.katam16@gmail.com</p>
-            <p class="flex items-center gap-2">📞 +1 (943) 212-0770</p>
+
+          <!-- Contact Info -->
+          <div class="glass-effect rounded-2xl p-6 hover-card-effect">
+            <h3 class="text-xl font-bold mb-4 text-blue-300">Get In Touch</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-gray-300">
+                <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                  <span>📍</span>
+                </div>
+                <span>Fairfax, VA, USA</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-300">
+                <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                  <span>📧</span>
+                </div>
+                <span>karan.katam16@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-3 text-gray-300">
+                <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                  <span>📞</span>
+                </div>
+                <span>+1 (943) 212-0770</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-6">
-          <div class="glass-effect rounded-xl p-6 card-hover">
-            <h3 class="font-bold mb-4 text-blue-400">Languages</h3>
-            <div class="space-y-2 text-sm text-gray-300">
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Python</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">SQL</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">R</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">C++</div>
+        <!-- Skills Grid -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Programming Languages -->
+            <div class="skill-card glass-effect rounded-xl p-6 hover-card-effect">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                  <span>💻</span>
+                </div>
+                <h3 class="font-bold text-blue-400">Languages</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 transition">Python</span>
+                <span class="bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 transition">SQL</span>
+                <span class="bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 transition">R</span>
+                <span class="bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm hover:bg-blue-500/20 transition">C++</span>
+              </div>
+            </div>
+
+            <!-- ML/AI Skills -->
+            <div class="skill-card glass-effect rounded-xl p-6 hover-card-effect">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                  <span>🧠</span>
+                </div>
+                <h3 class="font-bold text-purple-400">ML/AI Skills</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm hover:bg-purple-500/20 transition">Deep Learning</span>
+                <span class="bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm hover:bg-purple-500/20 transition">NLP</span>
+                <span class="bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm hover:bg-purple-500/20 transition">Computer Vision</span>
+                <span class="bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm hover:bg-purple-500/20 transition">RAG</span>
+                <span class="bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm hover:bg-purple-500/20 transition">Multi-agent</span>
+                <span class="bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm hover:bg-purple-500/20 transition">LLMs</span>
+              </div>
             </div>
           </div>
-          <div class="glass-effect rounded-xl p-6 card-hover">
-            <h3 class="font-bold mb-4 text-blue-400">ML/AI Skills</h3>
-            <div class="space-y-2 text-sm text-gray-300">
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Deep Learning</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">NLP</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Computer Vision</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">RAG</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Multi-agent Systems</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Model Optimization</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">LLMs</div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Tools & Frameworks -->
+            <div class="skill-card glass-effect rounded-xl p-6 hover-card-effect">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <span>🔧</span>
+                </div>
+                <h3 class="font-bold text-green-400">Tools & Frameworks</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm hover:bg-green-500/20 transition">LangChain</span>
+                <span class="bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm hover:bg-green-500/20 transition">Tableau</span>
+                <span class="bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm hover:bg-green-500/20 transition">PySpark</span>
+                <span class="bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm hover:bg-green-500/20 transition">HuggingFace</span>
+                <span class="bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm hover:bg-green-500/20 transition">Ollama</span>
+              </div>
+            </div>
+
+            <!-- Cloud & DevOps -->
+            <div class="skill-card glass-effect rounded-xl p-6 hover-card-effect">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                  <span>☁️</span>
+                </div>
+                <h3 class="font-bold text-orange-400">Cloud & DevOps</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm hover:bg-orange-500/20 transition">AWS EC2</span>
+                <span class="bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm hover:bg-orange-500/20 transition">S3</span>
+                <span class="bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm hover:bg-orange-500/20 transition">Lambda</span>
+                <span class="bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm hover:bg-orange-500/20 transition">Azure</span>
+              </div>
             </div>
           </div>
-          <div class="glass-effect rounded-xl p-6 card-hover">
-            <h3 class="font-bold mb-4 text-blue-400">Tools & Frameworks</h3>
-            <div class="space-y-2 text-sm text-gray-300">
-              <div class="bg-slate-800 px-3 py-1 rounded-full">LangChain</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Tableau</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">PySpark</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Git</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">HuggingFace Transformers</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Ollama</div>
+
+          <!-- Education & Focus -->
+          <div class="skill-card glass-effect rounded-xl p-6 hover-card-effect">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full flex items-center justify-center">
+                <span>🎓</span>
+              </div>
+              <h3 class="font-bold text-indigo-400">Education & Expertise</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-slate-800/30 border border-indigo-500/30 p-3 rounded-lg">
+                <p class="font-semibold text-white">Master's in Data Analytics Engineering</p>
+                <p class="text-sm text-gray-400">George Mason University</p>
+              </div>
+              <div class="bg-slate-800/30 border border-indigo-500/30 p-3 rounded-lg">
+                <p class="font-semibold text-white">Specialized in RAG & Agentic Systems</p>
+                <p class="text-sm text-gray-400">Building intelligent AI solutions for tomorrow</p>
+              </div>
             </div>
           </div>
-          <div class="glass-effect rounded-xl p-6 card-hover">
-            <h3 class="font-bold mb-4 text-blue-400">Cloud & DevOps</h3>
-            <div class="space-y-2 text-sm text-gray-300">
-              <div class="bg-slate-800 px-3 py-1 rounded-full">AWS EC2</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">S3</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Lambda</div>
-              <div class="bg-slate-800 px-3 py-1 rounded-full">Azure</div>
-            </div>
-          </div>
-        
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <div class="glass-effect rounded-2xl p-8 max-w-2xl mx-auto hover-card-effect">
+          <h3 class="text-2xl font-bold mb-4">Let's Build Something Amazing Together</h3>
+          <p class="text-gray-300 mb-6">Ready to transform your data challenges into intelligent solutions?</p>
+          <div class="flex gap-4 justify-center">
+            <a href="projects.html" class="btn-gradient px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition">View My Work</a>
+            <a href="contact.html" class="border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 py-3 rounded-full font-semibold transition">Get In Touch</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Mobile nav script -->
+  <script>
+    const btn = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDuration = '0.001ms';
+        el.style.animationIterationCount = '1';
+        el.style.transitionDuration = '0.001ms';
+      });
+    }
+  </script>
 </body>
 </html>
