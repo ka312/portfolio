@@ -1,473 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Karan Sai Goud Katam</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite'
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '33%': { transform: 'translateY(-8px)' },
-                            '66%': { transform: 'translateY(4px)' }
-                        }
-                    }
-                }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Karan Sai Goud Katam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            gradient: 'gradient 15s ease infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0) rotate(0)' },
+              '33%': { transform: 'translateY(-10px) rotate(5deg)' },
+              '66%': { transform: 'translateY(5px) rotate(-5deg)' }
+            },
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' }
             }
+          }
         }
-    </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #3b82f6, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .btn-gradient {
-            background: linear-gradient(135deg, #3b82f6, #6366f1);
-            transition: all 0.3s ease;
-        }
-        .btn-gradient:hover {
-            background: linear-gradient(135deg, #2563eb, #4f46e5);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .card-hover:hover {
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 16px 48px 0 rgba(59, 130, 246, 0.15);
-            border-color: rgba(99, 102, 241, 0.3);
-            transform: translateY(-6px) scale(1.02);
-        }
-        .github-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.95);
-            color: #18181b;
-            border: 2px solid transparent;
-            border-radius: 9999px;
-            padding: 0.5rem 1.2rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 18px 0 rgba(59, 130, 246, 0.1);
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .github-btn::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 9999px;
-            padding: 2px;
-            background: linear-gradient(90deg, #3b82f6, #6366f1, #3b82f6);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: 0;
-        }
-        .github-btn > * {
-            position: relative;
-            z-index: 1;
-        }
-        .github-btn:hover {
-            background: #f8fafc;
-            color: #3b82f6;
-            box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.2);
-            transform: scale(1.05);
-        }
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: float 6s ease-in-out infinite;
-        }
-        .floating-shape:nth-child(1) {
-            top: 10%; left: 10%;
-            width: 100px; height: 100px;
-            background: linear-gradient(45deg, #3b82f6, #6366f1);
-            animation-delay: 0s;
-        }
-        .floating-shape:nth-child(2) {
-            top: 20%; right: 15%;
-            width: 80px; height: 80px;
-            background: linear-gradient(45deg, #0ea5e9, #3b82f6);
-            animation-delay: 1s;
-        }
-        .floating-shape:nth-child(3) {
-            bottom: 20%; left: 20%;
-            width: 120px; height: 120px;
-            background: linear-gradient(45deg, #6366f1, #60a5fa);
-            animation-delay: 2s;
-        }
-        .floating-shape:nth-child(4) {
-            bottom: 10%; right: 10%;
-            width: 90px; height: 90px;
-            background: linear-gradient(45deg, #10b981, #3b82f6);
-            animation-delay: 3s;
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    /* Gradient background */
+    .gradient-bg {
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #1e40af, #1e3a8a);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+
+    /* Text gradient */
+    .text-gradient {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% auto;
+      animation: gradient 3s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Button gradient */
+    .btn-gradient {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% auto;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-gradient:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Glass effect */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+
+    /* Project card hover effects */
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(59, 130, 246, 0.25);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: transform 0.6s;
+      transform: rotate(45deg) translate(-100%, -100%);
+    }
+    .project-card:hover::before {
+      transform: rotate(45deg) translate(100%, 100%);
+    }
+
+    /* GitHub button styling */
+    .github-btn {
+      background: rgba(255, 255, 255, 0.95);
+      color: #1e293b;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .github-btn:hover {
+      background: rgba(255, 255, 255, 1);
+      color: #3b82f6;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+      border-color: rgba(99, 102, 241, 0.6);
+    }
+
+    /* Floating shapes */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.3;
+      mix-blend-mode: screen;
+      animation: float 12s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .floating-shape:nth-child(1) {
+      top: 8%; left: 5%;
+      width: 200px; height: 200px;
+      background: linear-gradient(45deg, #3b82f6, #6366f1);
+      animation-delay: 0s;
+    }
+    .floating-shape:nth-child(2) {
+      top: 25%; right: 10%;
+      width: 150px; height: 150px;
+      background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+      animation-delay: 4s;
+    }
+    .floating-shape:nth-child(3) {
+      bottom: 20%; left: 15%;
+      width: 180px; height: 180px;
+      background: linear-gradient(45deg, #06b6d4, #3b82f6);
+      animation-delay: 8s;
+    }
+    .floating-shape:nth-child(4) {
+      bottom: 10%; right: 20%;
+      width: 160px; height: 160px;
+      background: linear-gradient(45deg, #10b981, #6366f1);
+      animation-delay: 6s;
+    }
+
+    /* Nav underline */
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #6366f1);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Tech tag hover */
+    .tech-tag {
+      transition: all 0.3s ease;
+    }
+    .tech-tag:hover {
+      background: rgba(59, 130, 246, 0.2);
+      transform: scale(1.05);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
+<body class="gradient-bg text-white">
 
-<body class="gradient-bg text-white font-sans scroll-smooth">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full glass-effect z-50" role="navigation" aria-label="Primary">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-gradient">Karan Sai Goud Katam</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full glass-effect z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-gradient">Karan Sai Goud Katam</div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="Resume_Karan_sai_goud_katam.pdf" download class="btn-gradient px-5 py-2 rounded-full text-sm font-semibold">Download Resume</a>
-                    <a href="index.html" class="text-gray-300 hover:text-blue-400 transition">Home</a>
-                    <a href="about.html" class="text-gray-300 hover:text-blue-400 transition">About</a>
-                    <a href="experience.html" class="text-gray-300 hover:text-blue-400 transition">Experience</a>
-                    <a href="projects.html" class="text-blue-400 font-semibold transition">Projects</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-blue-400 transition">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+        <!-- Desktop -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="Resume_Karan_sai_goud_katam.pdf" download
+             class="btn-gradient px-5 py-2 rounded-full text-sm font-semibold"
+             rel="noopener">Download Resume</a>
+          <a href="index.html" class="nav-link text-gray-300 hover:text-blue-400">Home</a>
+          <a href="about.html" class="nav-link text-gray-300 hover:text-blue-400">About</a>
+          <a href="experience.html" class="nav-link text-gray-300 hover:text-blue-400">Experience</a>
+          <a href="projects.html" class="nav-link text-blue-400 font-semibold">Projects</a>
+          <a href="contact.html" class="nav-link text-gray-300 hover:text-blue-400">Contact</a>
         </div>
-    </nav>
 
-    <!-- Projects Section -->
-    <section id="projects" class="relative min-h-screen py-24 px-6 overflow-hidden">
-        <!-- Floating Background Shapes -->
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
+        <!-- Mobile toggle -->
+        <button id="navToggle" class="md:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
 
-        <div class="z-10 relative max-w-6xl mx-auto">
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <h1 class="text-4xl lg:text-5xl font-extrabold mb-6">
-                    Featured <span class="text-gradient">Projects</span>
-                </h1>
-                <p class="text-xl text-blue-200 max-w-3xl mx-auto">
-                    Explore my latest work in AI, machine learning, and data science. Each project showcases innovative solutions to real-world problems.
-                </p>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden mt-3 space-y-2">
+        <a href="Resume_Karan_sai_goud_katam.pdf" download class="block btn-gradient text-center px-5 py-2 rounded-full text-sm font-semibold" rel="noopener">Download Resume</a>
+        <a href="index.html" class="block nav-link text-gray-300 hover:text-blue-400">Home</a>
+        <a href="about.html" class="block nav-link text-gray-300 hover:text-blue-400">About</a>
+        <a href="experience.html" class="block nav-link text-gray-300 hover:text-blue-400">Experience</a>
+        <a href="projects.html" class="block nav-link text-blue-400 font-semibold">Projects</a>
+        <a href="contact.html" class="block nav-link text-gray-300 hover:text-blue-400">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section id="projects" class="relative pt-32 pb-20 px-6 overflow-hidden">
+    <!-- Floating background shapes -->
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">
+          Featured <span class="text-gradient">Projects</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+        <p class="text-xl text-blue-200 mt-6 max-w-3xl mx-auto">
+          Explore my latest work in AI, machine learning, and data science. Each project showcases innovative solutions to real-world challenges.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid lg:grid-cols-2 gap-8 mb-16">
+        <!-- Project: CapIntel -->
+        <div class="project-card glass-effect rounded-2xl p-8">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
             </div>
-
-            <!-- Projects Grid -->
-            <div class="grid lg:grid-cols-2 gap-8">
-                <!-- Project: CapIntel -->
-                <div class="card-hover rounded-2xl p-8 group">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                                    CapIntel – AI-Powered VC Deal Sourcing
-                                </h3>
-                                <p class="text-blue-300 font-medium">LangChain, Streamlit, OpenAI, Python</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Multi-agent system for research, thesis writing, startup sourcing with markdown reports and chart exports. Automates the entire VC research workflow from data collection to presentation.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-blue-400"></div>
-                            <span>Agents automate research & due diligence</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-blue-400"></div>
-                            <span>Customizable Streamlit dashboard</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-blue-400"></div>
-                            <span>Charts & PDF exports</span>
-                        </div>
-                    </div>
-
-                    <a href="https://github.com/ka312/CapIntel" class="github-btn" target="_blank" rel="noopener">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
-
-                <!-- Project: GovSearch AI -->
-                <div class="card-hover rounded-2xl p-8 group">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                                    GovSearch AI – Government Contract Chatbot
-                                </h3>
-                                <p class="text-blue-300 font-medium">LangChain, Azure OpenAI, Streamlit, PostgreSQL</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Intelligent chatbot that converts plain language queries to SQL with advanced memory capabilities and entity recognition for government contract databases.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                            <span>Natural language to SQL conversion</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                            <span>Context-aware memory system</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                            <span>Advanced entity recognition</span>
-                        </div>
-                    </div>
-
-                    <a href="https://github.com/ka312/GovchatAI" class="github-btn" target="_blank" rel="noopener">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
-
-                <!-- Project: Universal Summa Script -->
-                <div class="card-hover rounded-2xl p-8 group">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                                    Universal Summa Script – AI Transcription Tool
-                                </h3>
-                                <p class="text-blue-300 font-medium">Whisper API, yt-dlp, pydub, Python</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Advanced transcription and summarization tool for video and audio content with multi-language support and translation capabilities.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-purple-400"></div>
-                            <span>Whisper AI transcription engine</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-purple-400"></div>
-                            <span>Automatic video download & conversion</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-purple-400"></div>
-                            <span>Concurrent processing & translations</span>
-                        </div>
-                    </div>
-
-                    <a href="https://github.com/ka312/Universal-Summa-Script" class="github-btn" target="_blank" rel="noopener">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
-
-                <!-- Project: BARE -->
-                <div class="card-hover rounded-2xl p-8 group">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                                    BARE – Business Analyst Reverse Engineering
-                                </h3>
-                                <p class="text-blue-300 font-medium">CodeLLaMA, AST, Python</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            Revolutionary tool that extracts business logic from legacy codebases, generating comprehensive business requirements and user stories automatically.
-                        </p>
-                    </div>
-
-                    <div class="space-y-3 mb-6">
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-orange-400"></div>
-                            <span>LLM-powered code understanding</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-orange-400"></div>
-                            <span>AST parsing for deep insights</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-gray-300">
-                            <div class="w-2 h-2 rounded-full bg-orange-400"></div>
-                            <span>Automated BRD & user story generation</span>
-                        </div>
-                    </div>
-
-                    <a href="https://github.com/ka312/bare-business-analyst-reverse-engineering" class="github-btn" target="_blank" rel="noopener">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white">CapIntel</h3>
+              <p class="text-blue-300 font-medium">AI-Powered VC Deal Sourcing</p>
             </div>
+          </div>
+          
+          <p class="text-lg text-gray-200 mb-6 leading-relaxed">
+            Multi-agent system for research, thesis writing, and startup sourcing with markdown reports and chart exports. Automates the entire VC research workflow from data collection to presentation.
+          </p>
 
-
-
-            <!-- Technical Skills Showcase -->
-            <div class="mt-20">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold mb-4 text-gradient">Technologies Used</h3>
-                    <p class="text-blue-200 text-lg">The cutting-edge tools and frameworks powering these solutions</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="glass-effect rounded-xl p-6 text-center project-card">
-                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-white mb-2">Frontend</h4>
-                        <p class="text-sm text-gray-300">Streamlit, React, HTML/CSS</p>
-                    </div>
-
-                    <div class="glass-effect rounded-xl p-6 text-center project-card">
-                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-white mb-2">Backend</h4>
-                        <p class="text-sm text-gray-300">Python, FastAPI, PostgreSQL</p>
-                    </div>
-
-                    <div class="glass-effect rounded-xl p-6 text-center project-card">
-                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-white mb-2">AI/ML</h4>
-                        <p class="text-sm text-gray-300">LangChain, OpenAI, Whisper</p>
-                    </div>
-
-                    <div class="glass-effect rounded-xl p-6 text-center project-card">
-                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-bold text-white mb-2">Cloud</h4>
-                        <p class="text-sm text-gray-300">AWS, Azure, Docker</p>
-                    </div>
-                </div>
+          <div class="space-y-3 mb-6">
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-blue-500/20">
+              <div class="w-6 h-6 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🤖</span>
+              </div>
+              <p class="text-gray-300">Intelligent agents automate research and due diligence processes</p>
             </div>
-
-            <!-- Project Stats -->
-            <div class="mt-20">
-                <div class="glass-effect rounded-2xl p-8">
-                    <h3 class="text-2xl font-bold mb-8 text-center text-gradient">Project Impact</h3>
-                    <div class="grid md:grid-cols-4 gap-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-400 mb-2">4</div>
-                            <p class="text-gray-300">Active Projects</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-green-400 mb-2">15+</div>
-                            <p class="text-gray-300">Technologies Used</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-purple-400 mb-2">100%</div>
-                            <p class="text-gray-300">Open Source</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-orange-400 mb-2">∞</div>
-                            <p class="text-gray-300">Learning Journey</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-blue-500/20">
+              <div class="w-6 h-6 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">📊</span>
+              </div>
+              <p class="text-gray-300">Interactive Streamlit dashboard with customizable workflows</p>
             </div>
-
-            <!-- Call to Action -->
-            <div class="text-center mt-16">
-                <div class="glass-effect rounded-2xl p-8 max-w-3xl mx-auto">
-                    <h3 class="text-2xl font-bold mb-4">Interested in Collaborating?</h3>
-                    <p class="text-gray-300 mb-8 text-lg">
-                        Whether you need AI consulting, custom development, or want to discuss innovative project ideas, let's connect and build something amazing together.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="contact.html" class="btn-gradient px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg hover:scale-105 transition">Get In Touch</a>
-                        <a href="Resume_Karan_sai_goud_katam.pdf" download class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition">Download Resume</a>
-                    </div>
-                </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-blue-500/20">
+              <div class="w-6 h-6 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">📈</span>
+              </div>
+              <p class="text-gray-300">Automated chart generation and PDF report exports</p>
             </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm">LangChain</span>
+            <span class="tech-tag bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm">Streamlit</span>
+            <span class="tech-tag bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm">OpenAI</span>
+            <span class="tech-tag bg-slate-800/50 border border-blue-500/30 px-3 py-1 rounded-full text-sm">Python</span>
+          </div>
+
+          <a href="https://github.com/ka312/CapIntel" target="_blank" rel="noopener"
+             class="github-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
         </div>
-    </section>
 
-    <!-- Mobile nav script -->
-    <script>
-        const btn = document.getElementById('navToggle');
-        const menu = document.getElementById('mobileMenu');
-        if (btn && menu) {
-            btn.addEventListener('click', () => {
-                const isOpen = !menu.classList.contains('hidden');
-                menu.classList.toggle('hidden');
-                btn.setAttribute('aria-expanded', String(!isOpen));
-            });
-        }
+        <!-- Project: GovSearch AI -->
+        <div class="project-card glass-effect rounded-2xl p-8">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white">GovSearch AI</h3>
+              <p class="text-green-300 font-medium">Government Contract Chatbot</p>
+            </div>
+          </div>
+          
+          <p class="text-lg text-gray-200 mb-6 leading-relaxed">
+            Intelligent chatbot that converts plain language queries to SQL with advanced memory capabilities and entity recognition for government contract databases.
+          </p>
 
-        // Respect reduced motion
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.querySelectorAll('*').forEach(el => {
-                el.style.animationDuration = '0.001ms';
-                el.style.animationIterationCount = '1';
-                el.style.transitionDuration = '0.001ms';
-            });
-        }
-    </script>
+          <div class="space-y-3 mb-6">
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-green-500/20">
+              <div class="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🗣️</span>
+              </div>
+              <p class="text-gray-300">Natural language to SQL conversion with high accuracy</p>
+            </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-green-500/20">
+              <div class="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🧠</span>
+              </div>
+              <p class="text-gray-300">Context-aware conversation memory system</p>
+            </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-green-500/20">
+              <div class="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🎯</span>
+              </div>
+              <p class="text-gray-300">Advanced entity recognition for complex queries</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm">LangChain</span>
+            <span class="tech-tag bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm">Azure OpenAI</span>
+            <span class="tech-tag bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm">Streamlit</span>
+            <span class="tech-tag bg-slate-800/50 border border-green-500/30 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+          </div>
+
+          <a href="https://github.com/ka312/GovchatAI" target="_blank" rel="noopener"
+             class="github-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Project: Universal Summa Script -->
+        <div class="project-card glass-effect rounded-2xl p-8">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white">Universal Summa Script</h3>
+              <p class="text-purple-300 font-medium">AI Transcription Tool</p>
+            </div>
+          </div>
+          
+          <p class="text-lg text-gray-200 mb-6 leading-relaxed">
+            Advanced transcription and summarization tool for video and audio content with multi-language support and translation capabilities.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-purple-500/20">
+              <div class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🎤</span>
+              </div>
+              <p class="text-gray-300">Whisper AI transcription engine for high accuracy</p>
+            </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-purple-500/20">
+              <div class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">📺</span>
+              </div>
+              <p class="text-gray-300">Automatic video download and audio conversion</p>
+            </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-purple-500/20">
+              <div class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">⚡</span>
+              </div>
+              <p class="text-gray-300">Concurrent processing with translation support</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm">Whisper API</span>
+            <span class="tech-tag bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm">yt-dlp</span>
+            <span class="tech-tag bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm">pydub</span>
+            <span class="tech-tag bg-slate-800/50 border border-purple-500/30 px-3 py-1 rounded-full text-sm">Python</span>
+          </div>
+
+          <a href="https://github.com/ka312/Universal-Summa-Script" target="_blank" rel="noopener"
+             class="github-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Project: BARE -->
+        <div class="project-card glass-effect rounded-2xl p-8">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white">BARE</h3>
+              <p class="text-orange-300 font-medium">Business Analyst Reverse Engineering</p>
+            </div>
+          </div>
+          
+          <p class="text-lg text-gray-200 mb-6 leading-relaxed">
+            Revolutionary tool that extracts business logic from legacy codebases, generating comprehensive business requirements and user stories automatically.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-orange-500/20">
+              <div class="w-6 h-6 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🧠</span>
+              </div>
+              <p class="text-gray-300">LLM-powered code understanding and analysis</p>
+            </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-orange-500/20">
+              <div class="w-6 h-6 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">🌳</span>
+              </div>
+              <p class="text-gray-300">AST parsing for deep structural insights</p>
+            </div>
+            <div class="flex items-start gap-4 p-3 bg-slate-800/30 rounded-lg border border-orange-500/20">
+              <div class="w-6 h-6 bg-orange-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-xs">📋</span>
+              </div>
+              <p class="text-gray-300">Automated BRD and user story generation</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="tech-tag bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm">CodeLLaMA</span>
+            <span class="tech-tag bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm">AST</span>
+            <span class="tech-tag bg-slate-800/50 border border-orange-500/30 px-3 py-1 rounded-full text-sm">Python</span>
+          </div>
+
+          <a href="https://github.com/ka312/bare-business-analyst-reverse-engineering" target="_blank" rel="noopener"
+             class="github-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Technical Skills Showcase -->
+      <div class="mt-16">
+        <div class="text-center mb-12">
+          <h3 class="text-3xl font-bold mb-4 text-gradient">Technologies & Impact</h3>
+          <p class="text-blue-200 text-lg">The cutting-edge tools and frameworks powering these solutions</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div class="project-card glass-effect rounded-xl p-6 text-center">
+            <div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h4 class="font-bold text-white mb-2">Frontend</h4>
+            <p class="text-sm text-gray-300">Streamlit, React, HTML/CSS</p>
+          </div>
+
+          <div class="project-card glass-effect rounded-xl p-6 text-center">
+            <div class="w-14 h-14 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
+              </svg>
+            </div>
+            <h4 class="font-bold text-white mb-2">Backend</h4>
+            <p class="text-sm text-gray-300">Python, FastAPI, PostgreSQL</p>
+          </div>
+
+          <div class="project-card glass-effect rounded-xl p-6 text-center">
+            <div class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
+            <h4 class="font-bold text-white mb-2">AI/ML</h4>
+            <p class="text-sm text-gray-300">LangChain, OpenAI, Whisper</p>
+          </div>
+
+          <div class="project-card glass-effect rounded-xl p-6 text-center">
+            <div class="w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+              </svg>
+            </div>
+            <h4 class="font-bold text-white mb-2">Cloud</h4>
+            <p class="text-sm text-gray-300">AWS, Azure, Docker</p>
+          </div>
+        </div>
+
+        <!-- Project Stats -->
+        <div class="glass-effect rounded-2xl p-8">
+          <h3 class="text-2xl font-bold mb-8 text-center text-gradient">Project Impact</h3>
+          <div class="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div class="text-4xl font-bold text-blue-400 mb-2">4</div>
+              <p class="text-gray-300">Featured Projects</p>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-green-400 mb-2">15+</div>
+              <p class="text-gray-300">Technologies Used</p>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-purple-400 mb-2">100%</div>
+              <p class="text-gray-300">Open Source</p>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-orange-400 mb-2">∞</div>
+              <p class="text-gray-300">Innovation Focus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <div class="glass-effect rounded-2xl p-8 max-w-2xl mx-auto project-card">
+          <h3 class="text-2xl font-bold mb-4 text-gradient">Ready to Collaborate?</h3>
+          <p class="text-gray-300 mb-6 text-lg">
+            Let's transform your data challenges into intelligent solutions. Whether you need AI consulting, custom development, or want to discuss innovative ideas.
+          </p>
+          <div class="flex gap-4 justify-center">
+            <a href="contact.html" class="btn-gradient px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition">Get In Touch</a>
+            <a href="Resume_Karan_sai_goud_katam.pdf" download class="border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 py-3 rounded-full font-semibold transition" rel="noopener">Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile nav script -->
+  <script>
+    const btn = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDuration = '0.001ms';
+        el.style.animationIterationCount = '1';
+        el.style.transitionDuration = '0.001ms';
+      });
+    }
+  </script>
 </body>
-</html> 
+</html>
